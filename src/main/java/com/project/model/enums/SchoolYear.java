@@ -1,5 +1,8 @@
 package com.project.model.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum SchoolYear {
 
     SIXTH_GRADE(6, "6th Grade", "6º Ano"),
@@ -18,18 +21,6 @@ public enum SchoolYear {
         this.value = value;
         this.englishLabel = englishLabel;
         this.portugueseLabel = portugueseLabel;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public String getEnglishLabel() {
-        return englishLabel;
-    }
-
-    public String getPortugueseLabel() {
-        return portugueseLabel;
     }
 
 }
