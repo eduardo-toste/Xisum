@@ -1,0 +1,12 @@
+CREATE TABLE topics (
+    id UUID PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    school_year VARCHAR(30) NOT NULL CHECK (school_year IN (
+        'SIXTH_GRADE', 'SEVENTH_GRADE', 'EIGHTH_GRADE', 'NINTH_GRADE',
+        'HIGH_SCHOOL_1', 'HIGH_SCHOOL_2', 'HIGH_SCHOOL_3'
+    )),
+    subject VARCHAR(30) NOT NULL CHECK (subject IN (
+        'PORTUGUESE', 'MATHEMATICS', 'HISTORY', 'GEOGRAPHY',
+        'CHEMISTRY', 'PHYSICS', 'BIOLOGY', 'ENGLISH'
+    ))
+);
