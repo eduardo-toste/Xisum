@@ -1,6 +1,5 @@
 package com.project.repository;
 
-import com.project.controller.QuestionController;
 import com.project.model.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 
