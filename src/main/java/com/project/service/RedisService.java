@@ -10,26 +10,26 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class RoomService {
+public class RedisService {
 
-    private static final String KEY_PREFIX = "room:";
+    private static final String ROOM_KEY_PREFIX = "room:";
     private static final Duration TTL = Duration.ofMinutes(30);
 
     private final RedisTemplate<String, Room> redisTemplate;
 
-    public void save(Room room) {
-        String key = KEY_PREFIX + room.getCode();
+    public void saveRoom(Room room) {
+        String key = ROOM_KEY_PREFIX + room.getCode();
         redisTemplate.opsForValue().set(key, room, TTL);
     }
 
-    public Optional<Room> findByCode(String code) {
-        String key = KEY_PREFIX + code;
+    public Optional<Room> findRoomByCode(String code) {
+        String key = ROOM_KEY_PREFIX + code;
         Room room = redisTemplate.opsForValue().get(key);
         return Optional.ofNullable(room);
     }
 
-    public void delete(String code) {
-        String key = KEY_PREFIX + code;
+    public void deleteRoom(String code) {
+        String key = ROOM_KEY_PREFIX + code;
         redisTemplate.delete(key);
     }
 
