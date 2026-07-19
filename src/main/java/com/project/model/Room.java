@@ -16,10 +16,7 @@ public class Room {
     private UUID topicId;
     private List<UUID> questionIds;
     private Integer currentQuestionIndex;
-    private String player1Nickname;
-    private String player2Nickname;
-    private Integer player1Score;
-    private Integer player2Score;
+    private List<Player> players;
     private RoomStatus status;
     private Instant createdAt;
 
