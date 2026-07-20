@@ -1,6 +1,9 @@
 package com.project.model;
 
+import com.project.exception.FullRoomException;
+import com.project.exception.InvalidTokenException;
 import com.project.model.enums.RoomStatus;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +13,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@Builder
 public class Room {
 
     private String code;
@@ -19,5 +23,21 @@ public class Room {
     private List<Player> players;
     private RoomStatus status;
     private Instant createdAt;
+
+    private boolean isFull() {
+        return players.size() >= 2;
+    }
+
+    public void addPlayer(Player player) {
+        if (isFull()) throw new FullRoomException();
+        players.add(player);
+    }
+
+    public Player findPlayerByToken(String token) {
+        return players.stream()
+                .filter(player -> player.getToken().equals(token))
+                .findFirst()
+                .orElseThrow(InvalidTokenException::new);
+    }
 
 }
