@@ -11,7 +11,7 @@ public record CreateRoomRequest(
         UUID topicId,
 
         @NotBlank(message = "Creator nickname is required")
-        String createNickname
+        String creatorNickname
 
 ) {
 }
