@@ -3,8 +3,10 @@ package com.project.model;
 import com.project.exception.FullRoomException;
 import com.project.exception.InvalidTokenException;
 import com.project.model.enums.RoomStatus;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
@@ -14,6 +16,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Room {
 
     private String code;
