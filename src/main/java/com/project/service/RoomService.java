@@ -1,7 +1,10 @@
 package com.project.service;
 
 import com.project.dto.CreateRoomRequest;
+import com.project.dto.JoinRoomRequest;
+import com.project.dto.JoinRoomResponse;
 import com.project.dto.RoomResponse;
+import com.project.exception.RoomNotFoundException;
 import com.project.model.Player;
 import com.project.model.Room;
 import com.project.model.enums.RoomStatus;
@@ -27,7 +30,7 @@ public class RoomService {
 
     public RoomResponse createRoom(CreateRoomRequest request) {
         String roomCode = generateUniqueRoomCode();
-        Player creator = buildCreatorPlayer(request.creatorNickname());
+        Player creator = buildPlayer(request.creatorNickname());
         Room room = buildRoom(roomCode, creator, request.topicId());
 
         redisService.saveRoom(room);
@@ -47,10 +50,21 @@ public class RoomService {
                 .build();
     }
 
-    private Player buildCreatorPlayer(String creatorNickname) {
+    public JoinRoomResponse joinRoom(JoinRoomRequest request) {
+        Room room = redisService.findRoomByCode(request.roomCode())
+                .orElseThrow(RoomNotFoundException::new);
+
+        Player player = buildPlayer(request.playerNickname());
+        room.addPlayer(player);
+        redisService.saveRoom(room);
+
+        return new JoinRoomResponse(player.getToken());
+    }
+
+    private Player buildPlayer(String nickname) {
         return Player.builder()
                 .token(UUID.randomUUID().toString())
-                .nickname(creatorNickname)
+                .nickname(nickname)
                 .score(0)
                 .build();
     }
