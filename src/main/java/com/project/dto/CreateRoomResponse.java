@@ -1,6 +1,6 @@
 package com.project.dto;
 
-public record RoomResponse(
+public record CreateRoomResponse(
 
         String roomLink,
         String roomCode,

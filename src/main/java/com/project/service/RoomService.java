@@ -3,7 +3,7 @@ package com.project.service;
 import com.project.dto.CreateRoomRequest;
 import com.project.dto.JoinRoomRequest;
 import com.project.dto.JoinRoomResponse;
-import com.project.dto.RoomResponse;
+import com.project.dto.CreateRoomResponse;
 import com.project.exception.RoomNotFoundException;
 import com.project.model.Player;
 import com.project.model.Room;
@@ -28,14 +28,14 @@ public class RoomService {
     @Value("${room.base.link}")
     private String roomBaseLink;
 
-    public RoomResponse createRoom(CreateRoomRequest request) {
+    public CreateRoomResponse createRoom(CreateRoomRequest request) {
         String roomCode = generateUniqueRoomCode();
         Player creator = buildPlayer(request.creatorNickname());
         Room room = buildRoom(roomCode, creator, request.topicId());
 
         redisService.saveRoom(room);
 
-        return new RoomResponse(roomBaseLink + roomCode, roomCode, creator.getToken());
+        return new CreateRoomResponse(roomBaseLink + roomCode, roomCode, creator.getToken());
     }
 
     private Room buildRoom(String roomCode, Player creator, UUID topicId) {

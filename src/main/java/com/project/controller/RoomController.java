@@ -3,7 +3,7 @@ package com.project.controller;
 import com.project.dto.CreateRoomRequest;
 import com.project.dto.JoinRoomRequest;
 import com.project.dto.JoinRoomResponse;
-import com.project.dto.RoomResponse;
+import com.project.dto.CreateRoomResponse;
 import com.project.service.RoomService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +19,8 @@ public class RoomController {
     private final RoomService roomService;
 
     @PostMapping
-    public ResponseEntity<RoomResponse> createRoom(@RequestBody @Valid CreateRoomRequest request) {
-        RoomResponse response = roomService.createRoom(request);
+    public ResponseEntity<CreateRoomResponse> createRoom(@RequestBody @Valid CreateRoomRequest request) {
+        CreateRoomResponse response = roomService.createRoom(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
