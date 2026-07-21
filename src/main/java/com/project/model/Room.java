@@ -2,6 +2,7 @@ package com.project.model;
 
 import com.project.exception.FullRoomException;
 import com.project.exception.InvalidTokenException;
+import com.project.exception.UnavailableRoomException;
 import com.project.model.enums.RoomStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,6 +34,7 @@ public class Room {
     }
 
     public void addPlayer(Player player) {
+        if (status != RoomStatus.WAITING) throw new UnavailableRoomException();
         if (isFull()) throw new FullRoomException();
         players.add(player);
     }
