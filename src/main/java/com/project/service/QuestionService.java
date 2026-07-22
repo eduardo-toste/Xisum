@@ -1,7 +1,9 @@
 package com.project.service;
 
 import com.project.dto.CreateQuestionsRequest;
+import com.project.exception.QuestionNotFoundException;
 import com.project.mapper.QuestionMapper;
+import com.project.model.Question;
 import com.project.model.Topic;
 import com.project.repository.QuestionRepository;
 import com.project.repository.TopicRepository;
@@ -9,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +24,11 @@ public class QuestionService {
     public void createQuestions(CreateQuestionsRequest request) {
         Topic topic = findOrCreateTopic(request);
         questionRepository.saveAll(questionMapper.toQuestionList(request.questions(), topic));
+    }
+
+    public Question getQuestion(UUID questionId) {
+        return questionRepository.findById(questionId)
+                .orElseThrow(QuestionNotFoundException::new);
     }
 
     private Topic findOrCreateTopic(CreateQuestionsRequest request) {
