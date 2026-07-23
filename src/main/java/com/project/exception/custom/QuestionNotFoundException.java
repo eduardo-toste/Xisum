@@ -1,4 +1,4 @@
-package com.project.exception;
+package com.project.exception.custom;
 
 public class QuestionNotFoundException extends RuntimeException {
 

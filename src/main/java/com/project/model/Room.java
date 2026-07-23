@@ -1,8 +1,8 @@
 package com.project.model;
 
-import com.project.exception.FullRoomException;
-import com.project.exception.InvalidTokenException;
-import com.project.exception.UnavailableRoomException;
+import com.project.exception.custom.FullRoomException;
+import com.project.exception.custom.InvalidTokenException;
+import com.project.exception.custom.UnavailableRoomException;
 import com.project.model.enums.RoomStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
