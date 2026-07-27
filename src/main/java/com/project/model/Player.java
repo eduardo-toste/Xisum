@@ -17,5 +17,8 @@ public class Player {
     private String token;
     private Integer score;
 
+    public void increaseScore() {
+        this.score += 1;
+    }
 
 }
