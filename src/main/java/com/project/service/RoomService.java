@@ -69,7 +69,7 @@ public class RoomService {
                 .orElseThrow(RoomNotFoundException::new);
     }
 
-    private Question getCurrentQuestion(Room room) {
+    Question getCurrentQuestion(Room room) {
         UUID currentQuestionId = room.getQuestionIds().get(room.getCurrentQuestionIndex());
         return questionService.getQuestion(currentQuestionId);
     }
