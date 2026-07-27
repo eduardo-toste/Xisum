@@ -64,7 +64,7 @@ public class RoomService {
         return RoomStateResponse.from(room, players, currentQuestion);
     }
 
-    public Room findRoomOrThrow(String roomCode) {
+    Room findRoomOrThrow(String roomCode) {
         return redisService.findRoomByCode(roomCode)
                 .orElseThrow(RoomNotFoundException::new);
     }
