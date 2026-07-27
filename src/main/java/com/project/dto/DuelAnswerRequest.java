@@ -1,6 +1,7 @@
 package com.project.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public record DuelAnswerRequest(
 
@@ -8,6 +9,7 @@ public record DuelAnswerRequest(
         String playerToken,
 
         @NotBlank(message = "Answer is required")
+        @Size(max = 1, message = "Send only the option value")
         String answer
 
 ) {
