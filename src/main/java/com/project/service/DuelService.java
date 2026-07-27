@@ -1,9 +1,11 @@
 package com.project.service;
 
-import com.project.dto.DuelAnswerRequest;
+import com.project.dto.duel.DuelAnswerRequest;
+import com.project.dto.duel.DuelResultResponse;
 import com.project.exception.custom.DuelNotStartedException;
 import com.project.model.Player;
 import com.project.model.Question;
+import com.project.model.Result;
 import com.project.model.Room;
 import com.project.model.enums.RoomStatus;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ public class DuelService {
 
     private final RoomService roomService;
     private final RedisService redisService;
+    private final ResultService resultService;
 
     public void answerQuestion(String code, DuelAnswerRequest request) {
         Room room = roomService.findRoomOrThrow(code);
@@ -31,6 +34,11 @@ public class DuelService {
             player.increaseScore();
             redisService.saveRoom(room);
         }
+    }
+
+    public DuelResultResponse getResult(String code) {
+        Result result = resultService.getResultByRoom(code);
+        return DuelResultResponse.from(result);
     }
 
 }
