@@ -1,7 +1,7 @@
 package com.project.service;
 
 import com.project.dto.PlayerView;
-import com.project.dto.QuestionView;
+import com.project.dto.question.QuestionView;
 import com.project.dto.room.*;
 import com.project.exception.custom.RoomNotFoundException;
 import com.project.model.Player;

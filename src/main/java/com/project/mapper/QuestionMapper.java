@@ -1,6 +1,6 @@
 package com.project.mapper;
 
-import com.project.dto.CreateQuestionsRequest;
+import com.project.dto.question.CreateQuestionsRequest;
 import com.project.model.Question;
 import com.project.model.Topic;
 import org.springframework.stereotype.Component;

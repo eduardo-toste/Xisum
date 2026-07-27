@@ -1,8 +1,7 @@
 package com.project.dto.room;
 
 import com.project.dto.PlayerView;
-import com.project.dto.QuestionView;
-import com.project.model.Question;
+import com.project.dto.question.QuestionView;
 import com.project.model.Room;
 import com.project.model.enums.RoomStatus;
 

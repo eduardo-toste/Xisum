@@ -1,4 +1,4 @@
-package com.project.dto;
+package com.project.dto.question;
 
 import com.project.model.enums.Difficulty;
 import com.project.model.enums.SchoolYear;

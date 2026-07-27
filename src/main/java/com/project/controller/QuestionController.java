@@ -1,6 +1,6 @@
 package com.project.controller;
 
-import com.project.dto.CreateQuestionsRequest;
+import com.project.dto.question.CreateQuestionsRequest;
 import com.project.service.QuestionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

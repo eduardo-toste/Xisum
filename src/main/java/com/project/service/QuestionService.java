@@ -1,6 +1,6 @@
 package com.project.service;
 
-import com.project.dto.CreateQuestionsRequest;
+import com.project.dto.question.CreateQuestionsRequest;
 import com.project.exception.custom.QuestionNotFoundException;
 import com.project.mapper.QuestionMapper;
 import com.project.model.Question;

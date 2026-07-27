@@ -1,4 +1,4 @@
-package com.project.dto;
+package com.project.dto.question;
 
 import com.project.model.Question;
 
