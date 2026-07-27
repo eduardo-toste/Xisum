@@ -39,8 +39,8 @@ public class RoomService {
         return new CreateRoomResponse(roomBaseLink + roomCode, roomCode, creator.getToken());
     }
 
-    public JoinRoomResponse joinRoom(JoinRoomRequest request) {
-        Room room = findRoomOrThrow(request.roomCode());
+    public JoinRoomResponse joinRoom(String code, JoinRoomRequest request) {
+        Room room = findRoomOrThrow(code);
 
         Player player = buildPlayer(request.playerNickname());
         room.addPlayer(player);

@@ -23,9 +23,9 @@ public class RoomController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PostMapping("/join")
-    public ResponseEntity<JoinRoomResponse> joinRoom(@RequestBody @Valid JoinRoomRequest request) {
-        JoinRoomResponse response = roomService.joinRoom(request);
+    @PostMapping("/{code}/join")
+    public ResponseEntity<JoinRoomResponse> joinRoom(@PathVariable String code, @RequestBody @Valid JoinRoomRequest request) {
+        JoinRoomResponse response = roomService.joinRoom(code, request);
         return ResponseEntity.ok(response);
     }
 
