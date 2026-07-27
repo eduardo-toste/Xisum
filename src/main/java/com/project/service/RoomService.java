@@ -64,6 +64,11 @@ public class RoomService {
         return RoomStateResponse.from(room, players, currentQuestion);
     }
 
+    public Room findRoomOrThrow(String roomCode) {
+        return redisService.findRoomByCode(roomCode)
+                .orElseThrow(RoomNotFoundException::new);
+    }
+
     private Question getCurrentQuestion(Room room) {
         UUID currentQuestionId = room.getQuestionIds().get(room.getCurrentQuestionIndex());
         return questionService.getQuestion(currentQuestionId);
@@ -97,11 +102,6 @@ public class RoomService {
         } while (redisService.findRoomByCode(code).isPresent());
 
         return code;
-    }
-
-    private Room findRoomOrThrow(String roomCode) {
-        return redisService.findRoomByCode(roomCode)
-                .orElseThrow(RoomNotFoundException::new);
     }
 
 }
