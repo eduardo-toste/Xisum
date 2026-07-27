@@ -36,4 +36,8 @@ public class Question {
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
+    public boolean isCorrectAnswer(String answer) {
+        return options.get(correctOptionIndex).equals(answer);
+    }
+
 }
