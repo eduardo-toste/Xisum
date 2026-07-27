@@ -1,4 +1,4 @@
-package com.project.dto;
+package com.project.dto.duel;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
