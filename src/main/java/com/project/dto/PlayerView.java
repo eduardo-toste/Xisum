@@ -14,4 +14,8 @@ public record PlayerView(
         return new PlayerView(player.getNickname(), player.getScore());
     }
 
+    public static PlayerView of(String nickname, Integer score) {
+        return new PlayerView(nickname, score);
+    }
+
 }
