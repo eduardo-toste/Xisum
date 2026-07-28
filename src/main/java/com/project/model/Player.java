@@ -16,6 +16,7 @@ public class Player {
     private String nickname;
     private String token;
     private Integer score;
+    private int currentStreak;
 
     public void increaseScore() {
         this.score += 1;
