@@ -28,6 +28,7 @@ public class Room {
     private List<Player> players;
     private RoomStatus status;
     private Instant createdAt;
+    private Instant currentQuestionStartedAt;
 
     private boolean isFull() {
         return players.size() >= 2;
