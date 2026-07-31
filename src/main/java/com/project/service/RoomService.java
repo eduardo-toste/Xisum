@@ -79,6 +79,7 @@ public class RoomService {
                 .token(UUID.randomUUID().toString())
                 .nickname(nickname)
                 .score(0)
+                .currentStreak(0)
                 .build();
     }
 
