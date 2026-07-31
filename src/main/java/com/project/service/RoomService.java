@@ -92,6 +92,7 @@ public class RoomService {
                 .players(new ArrayList<>(List.of(creator)))
                 .status(RoomStatus.WAITING)
                 .createdAt(Instant.now())
+                .currentQuestionStartedAt(null)
                 .build();
     }
 
